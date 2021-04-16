@@ -1,6 +1,6 @@
-#ifndef ACTION_H
-#define ACTION_H
+#ifndef NEWSLEEP_H
+#define NEWSLEEP_H
 
-void milliSleep(float sec);
+void newSleep(float sec);
 
 #endif

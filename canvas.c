@@ -1,6 +1,7 @@
 #include "canvas.h"
 
 
+static void initCanvas(char** canvas, int rows, int columns);
 
 
 char** drawCanvas(int rows, int columns)
@@ -18,47 +19,24 @@ char** drawCanvas(int rows, int columns)
 
 
 
-void initPlayer(char** canvas, int playerLoc[2], char player)
+void initUnit(char** canvas, int unitLoc[2], char unit)
 {
-    switch (player)
+    switch (unit)
     {
         case 'u':
-            player = '^';
+            unit = '^';
             break;
         case 'd':
-            player = 'v';
+            unit = 'v';
             break;
         case 'l':
-            player = '<';
+            unit = '<';
             break;
         case 'r':
-            player = '>';
+            unit = '>';
             break;
     }
-    canvas[playerLoc[0]][playerLoc[1]] = player;
-}
-
-
-
-
-void initEnemy(char** canvas, int enemyLoc[2], char enemy)
-{
-    switch (enemy)
-    {
-        case 'u':
-            enemy = '^';
-            break;
-        case 'd':
-            enemy = 'v';
-            break;
-        case 'l':
-            enemy = '<';
-            break;
-        case 'r':
-            enemy = '>';
-            break;
-    }
-    canvas[enemyLoc[0]][enemyLoc[1]] = enemy;
+    canvas[unitLoc[0]][unitLoc[1]] = unit;
 }
 
 

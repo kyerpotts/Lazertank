@@ -3,6 +3,7 @@
 
 /* TYPEDEFS */
 typedef int boolean;
+typedef void (*fpColourPicker)();
 
 /* DEFINES */
 #define FALSE 0

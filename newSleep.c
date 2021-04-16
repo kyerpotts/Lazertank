@@ -1,4 +1,4 @@
-#define _DEFAULT_SOURCE_
+#define _DEFAULT_SOURCE
 #include <time.h>
 #include "newSleep.h"
 

@@ -8,6 +8,6 @@
 
 /* PROTOTYPES */
 boolean isBoundary(int rows, int columns, int rowLoc, int colLoc);
-boolean elementOverlap(int firstLoc[2], int secondLoc[2]);
+boolean checkOverlap(int firstLoc[2], int secondLoc[2]);
 
 #endif

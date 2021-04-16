@@ -8,9 +8,7 @@
 #include "defines.h"
 
 /* PROTOTYPES */
-static void initCanvas(char** canvas, int rows, int columns);
 char** drawCanvas(int rows, int columns);
-void initPlayer(char** canvas, int playerLoc[2], char playerDir);
-void initEnemy(char** canvas, int enemyLoc[2], char enemyDir);
+void initUnit(char** canvas, int unitLoc[2], char unit);
 
 #endif

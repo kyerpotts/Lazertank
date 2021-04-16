@@ -4,18 +4,9 @@
 /* INCLUDES */
 #include "boundaries.h"
 #include "defines.h"
+#include "newSleep.h"
 /* PROTOTYPES */
-void determineAction(char** canvas, int rows, int columns,
-        char* userInput, int playerLoc[2],
-        int enemyLoc[2], char* unit);
-static void move(char** canvas, char dir, int playerLoc[2], char* player);
-static void moveUp(char **canvas, int playerLoc[2], char *unit);
-static void moveDown(char **canvas, int playerLoc[2], char *unit);
-static void moveLeft(char **canvas, int playerLoc[2], char *unit);
-static void moveRight(char **canvas, int playerLoc[2], char *unit);
-static void changeDirection(char** canvas, char dir, int playerLoc[2],
-        char* player);
-static boolean canMove(int rows, int columns, int playerLoc[2],
-        int enemyLoc[2]);
-
+void determineAction(char** canvas, int rows, int columns, int playerLoc[2], int enemyLoc[2]);
+char* findUnit(char **canvas, int unitLoc[2]);
+void fireLaser(char **canvas, int unitLoc[2], int rows, int columns);
 #endif

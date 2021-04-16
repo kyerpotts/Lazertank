@@ -1,4 +1,5 @@
 #include "stage.h"
+#include "action.h"
 #include "defines.h"
 
 
@@ -12,7 +13,7 @@ void printStage(char** canvas, int rows, int columns)
     {
         for (j = 0; j < columns; j++)
         {
-            printf("%c", canvas[i][j]);
+                printf("%c", canvas[i][j]);
         }
         printf("\n");
     }
@@ -34,9 +35,10 @@ void printActionList()
 
 
 
-boolean checkEnemyFire(int playerLoc[2], int enemyLoc[2], char enemy)
+boolean checkEnemyFire(char **canvas, int playerLoc[2], int enemyLoc[2])
 {
     boolean enemyFire = FALSE;
+    char enemy = *findUnit(canvas,  enemyLoc);
     switch (enemy)
     {
         case '^':
