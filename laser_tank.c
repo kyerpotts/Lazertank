@@ -4,36 +4,68 @@
 
 int main(int argc, char** argv)
 {
-    int playerLoc[2] = {6, 7};
-    char player = 'r';
-    int enemyLoc[2] = {2, 8};
-    char enemy = 'l';
-    char** canvas = drawCanvas(10, 20);
-    initUnit(canvas, playerLoc,  player);
-    initUnit(canvas, enemyLoc,  enemy);
-    system("clear");
-    printStage(canvas, 10, 20);
-    printActionList();
+    int numOfArgs;
+    int rowSize;
+    int colSize;
+    int freeMemCounter;
+    int playerLoc[2];
+    int enemyLoc[2];
+    char playerDir;
+    char enemyDir;
+    char** canvas;
 
-    while(!(checkGameEndCondition(canvas, playerLoc, enemyLoc)))
+    numOfArgs = 9;
+    if (argc != numOfArgs)
     {
-        determineAction(canvas, 10, 20, playerLoc, enemyLoc);
-        system("clear");
-        printStage(canvas, 10, 20);
-        printActionList();
-        if(checkEnemyFire(canvas, playerLoc,  enemyLoc))
-        {
-            fireLaser(canvas, enemyLoc, 10, 20);
-        }
-    }
-
-    if(checkWinCondition(canvas, enemyLoc))
-    {
-        printf("\nYOU WIN!!!");
+        printf("Invalid arguments; Please run the program with the following arguments:\n");
+        printf("<row_size> <col_size> ");
+        printf("<player_row> <player_col> <player_direction> ");
+        printf("<enemy_row> <enemy_col> <enemy_direction>) ");
     }
     else
     {
-        printf("\nYOU LOST...");
+        rowSize = atoi(argv[1]);
+        colSize = atoi(argv[2]);
+        playerLoc[0] = atoi(argv[3]);
+        playerLoc[1] = atoi(argv[4]);
+        playerDir = *argv[5];
+        enemyLoc[0] = atoi(argv[6]);
+        enemyLoc[1] = atoi(argv[7]);
+        enemyDir = *argv[8];
+        canvas = drawCanvas(rowSize, colSize);
+        initUnit(canvas, playerLoc,  playerDir);
+        initUnit(canvas, enemyLoc,  enemyDir);
+        system("clear");
+        printStage(canvas, rowSize, colSize);
+        printActionList();
+
+        while(!(checkGameEndCondition(canvas, playerLoc, enemyLoc)))
+        {
+            determineAction(canvas, rowSize, colSize, playerLoc, enemyLoc);
+            system("clear");
+            printStage(canvas, rowSize, colSize);
+            printActionList();
+            if(checkEnemyFire(canvas, playerLoc,  enemyLoc))
+            {
+                fireLaser(canvas, enemyLoc, rowSize, colSize);
+            }
+        }
+
+        if(checkWinCondition(canvas, enemyLoc))
+        {
+            printf("\nYOU WIN!!!");
+        } else
+        {
+            printf("\nYOU LOST...");
+        }
+
+        for ( freeMemCounter = 0; freeMemCounter < rowSize; freeMemCounter++ )
+        {
+            /* TO DO: might not be correct, fix later */
+            free(canvas[freeMemCounter]);
+        }
+        free(canvas);
+        
     }
 
     return 0;
